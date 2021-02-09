@@ -41,6 +41,8 @@
     "registry": "https://npm.pkg.github.com/h2ostudio"
   },
   "repository": {
-    "url": ""
+    "type": "git",
+    "directory": "packages/name",
+    "url": "https://github.com/h2ostudio/koa-cli.git"
   }
 }
