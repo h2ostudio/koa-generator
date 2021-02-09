@@ -1,0 +1,46 @@
+{
+  "name": "@h2ostudio/koa-program",
+  "version": "1.0.0",
+  "bin": {
+    "koa": "bin/index.js"
+  },
+  "engines": {
+    "node": ">= 15"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "ejs": "^3.1.6",
+    "inquirer": "^7.3.3"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": false,
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "trailingComma": "es5"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.0.5",
+    "@types/inquirer": "^7.3.1",
+    "prettier": "^2.2.1"
+  },
+  "description": "koa web 项目脚手架",
+  "keywords": [
+    "koa",
+    "koa2",
+    "koa-web",
+    "koa-app",
+    "cli"
+  ],
+  "author": {
+    "name": "titor"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/h2ostudio"
+  },
+  "repository": {
+    "url": ""
+  }
+}

@@ -1,0 +1,10 @@
+node_modules
+*.js
+
+.idea
+.vscode
+.atom
+
+.DS_Store
+*.ini
+*.log

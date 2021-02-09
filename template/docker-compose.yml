@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  koa:
+    build: .
+    container_name: "<%= appName %>"
+    restart: "no"
+    ports:
+      - 4321:4321
+    volumes:
+      - .:/root
+    working_dir: /root/
