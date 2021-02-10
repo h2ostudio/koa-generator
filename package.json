@@ -1,6 +1,6 @@
 {
-  "name": "@h2ostudio/koa-program",
-  "version": "1.0.0",
+  "name": "koa-program",
+  "version": "1.1.0",
   "bin": {
     "koa": "bin/index.js"
   },
@@ -35,7 +35,8 @@
     "cli"
   ],
   "author": {
-    "name": "titor"
+    "name": "titor",
+    "email": "foolsecret@163.com"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/h2ostudio"

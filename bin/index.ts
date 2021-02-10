@@ -5,14 +5,21 @@ import * as os from "os";
 import ejs from "ejs";
 import chalk from "chalk";
 import { exec } from "child_process";
+import { resolve } from "path";
 
 // ------------------------------------------------
 // cli结果：
 let answers: { appName: string; pkgManager: number; author: string };
-// 脚本运行目录
-const path: string = process.cwd() + "/";
-// 模版所在目录
-const tpl: string = `${path}/template/`;
+
+// npm项目包 => 绝对路径
+const path: string = resolve(__dirname) + "/";
+// 项目安装后 => 固定目录
+const projectName = path.substring(0, path.lastIndexOf("/bin"));
+
+// 项目安装后 => 模版目录（复制模版使用）
+const tpl: string = `${projectName}/template/`;
+// 脚本运行所在目录（模版去向使用）
+const runPath: string = resolve(process.cwd()) + "/";
 
 // ========================================================
 // 1、CLI 交互
@@ -84,7 +91,7 @@ async function writing() {
 // Copy Static 文件
 function copyStatic(files: string[][]) {
   files.forEach(file => {
-    fs.copy(`${tpl}${file[0]}`, `${path}${answers.appName}/${file[1]}`);
+    fs.copy(`${tpl}${file[0]}`, `${runPath}${answers.appName}/${file[1]}`);
     console.log(
       chalk.green("+") +
         ` ${chalk.grey(answers.appName + "/" + file[1])} ${chalk.green(
@@ -99,7 +106,7 @@ function copyStatic(files: string[][]) {
 function copyTemplate(files: string[][]) {
   files.forEach(async file => {
     let compileContent = await ejs.renderFile(`${tpl}${file[0]}`, answers);
-    fs.write(`${path}${answers.appName}/${file[1]}`, compileContent);
+    fs.write(`${runPath}${answers.appName}/${file[1]}`, compileContent);
     console.log(
       chalk.green("+") +
         ` ${chalk.grey(answers.appName + "/" + file[1])} ${chalk.green(
