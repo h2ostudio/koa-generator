@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.file = void 0;
 var fs_1 = require("fs");
+var path_1 = require("path");
 /**
  * 文件操作类
  * @description 更加语义化的简便文件操作。
@@ -19,9 +20,9 @@ var file = /** @class */ (function () {
      */
     file.createPath = function (filePath) {
         // 获取完整目录（去除最后一位的文件字段）
-        var dir = filePath.substring(0, filePath.lastIndexOf("/"));
+        var dir = filePath.substring(0, filePath.lastIndexOf(path_1.sep));
         if (dir == "" || dir == null)
-            dir = "./"; // 不写目录名 => 根目录
+            dir = "." + path_1.sep; // 不写目录名 => 根目录
         // 文件夹不存在
         if (!fs_1.existsSync(dir)) {
             var actionNotice = fs_1.mkdirSync(dir, { recursive: true });

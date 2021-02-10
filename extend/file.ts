@@ -1,5 +1,5 @@
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "fs";
-
+import { sep } from "path";
 /**
  * 文件操作类
  * @description 更加语义化的简便文件操作。
@@ -15,8 +15,8 @@ class file {
    */
   protected static createPath(filePath: string): boolean {
     // 获取完整目录（去除最后一位的文件字段）
-    let dir = filePath.substring(0, filePath.lastIndexOf("/"));
-    if (dir == "" || dir == null) dir = "./"; // 不写目录名 => 根目录
+    let dir = filePath.substring(0, filePath.lastIndexOf(sep));
+    if (dir == "" || dir == null) dir = `.${sep}`; // 不写目录名 => 根目录
 
     // 文件夹不存在
     if (!existsSync(dir)) {
