@@ -1,6 +1,6 @@
 {
   "name": "koa-program",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "bin": {
     "koa": "bin/index.js"
   },
@@ -38,12 +38,9 @@
     "name": "titor",
     "email": "foolsecret@163.com"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/h2ostudio"
-  },
   "repository": {
     "type": "git",
     "directory": "packages/name",
-    "url": "https://github.com/h2ostudio/koa-cli.git"
+    "url": "https://github.com/h2ostudio/koa-generator.git"
   }
 }
