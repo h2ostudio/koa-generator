@@ -70,13 +70,13 @@ var path_1 = require("path");
 // cli结果：
 var answers;
 // npm项目包 => 绝对路径
-var path = path_1.resolve(__dirname) + "/";
+var path = path_1.join(path_1.resolve(__dirname), path_1.sep);
 // 项目安装后 => 固定目录
-var projectName = path.substring(0, path.lastIndexOf("/bin"));
+var projectName = path.substring(0, path.lastIndexOf("bin"));
 // 项目安装后 => 模版目录（复制模版使用）
-var tpl = projectName + "/template/";
+var tpl = path_1.join(projectName, "template", path_1.sep);
 // 脚本运行所在目录（模版去向使用）
-var runPath = path_1.resolve(process.cwd()) + "/";
+var runPath = path_1.join(path_1.resolve(process.cwd()), path_1.sep);
 // ========================================================
 // 1、CLI 交互
 inquirer_1.default
@@ -165,9 +165,9 @@ function writing() {
 // Copy Static 文件
 function copyStatic(files) {
     files.forEach(function (file) {
-        file_1.file.copy("" + tpl + file[0], "" + runPath + answers.appName + "/" + file[1]);
+        file_1.file.copy(path_1.join(tpl, file[0]), path_1.join(runPath, answers.appName, file[1]));
         console.log(chalk_1.default.green("+") +
-            (" " + chalk_1.default.grey(answers.appName + "/" + file[1]) + " " + chalk_1.default.green("SUCCESS.👌")));
+            (" " + chalk_1.default.grey(answers.appName + path_1.sep + file[1]) + " " + chalk_1.default.green("SUCCESS.👌")));
     });
 }
 // Copy template that uses the EJS engine
@@ -178,12 +178,12 @@ function copyTemplate(files) {
         var compileContent;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, ejs_1.default.renderFile("" + tpl + file[0], answers)];
+                case 0: return [4 /*yield*/, ejs_1.default.renderFile(path_1.join(tpl, file[0]), answers)];
                 case 1:
                     compileContent = _a.sent();
-                    file_1.file.write("" + runPath + answers.appName + "/" + file[1], compileContent);
+                    file_1.file.write(path_1.join(runPath, answers.appName, path_1.sep, file[1]), compileContent);
                     console.log(chalk_1.default.green("+") +
-                        (" " + chalk_1.default.grey(answers.appName + "/" + file[1]) + " " + chalk_1.default.green("SUCCESS.👌")));
+                        (" " + chalk_1.default.grey(answers.appName + path_1.sep + file[1]) + " " + chalk_1.default.green("SUCCESS.👌")));
                     return [2 /*return*/];
             }
         });

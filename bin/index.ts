@@ -5,21 +5,21 @@ import * as os from "os";
 import ejs from "ejs";
 import chalk from "chalk";
 import { exec } from "child_process";
-import { resolve } from "path";
+import { resolve, join, sep, normalize } from "path";
 
 // ------------------------------------------------
 // cli结果：
 let answers: { appName: string; pkgManager: number; author: string };
 
 // npm项目包 => 绝对路径
-const path: string = resolve(__dirname) + "/";
+const path: string = join(resolve(__dirname), sep);
 // 项目安装后 => 固定目录
-const projectName = path.substring(0, path.lastIndexOf("/bin"));
+const projectName = path.substring(0, path.lastIndexOf("bin"));
 
 // 项目安装后 => 模版目录（复制模版使用）
-const tpl: string = `${projectName}/template/`;
+const tpl: string = join(projectName, "template", sep);
 // 脚本运行所在目录（模版去向使用）
-const runPath: string = resolve(process.cwd()) + "/";
+const runPath: string = join(resolve(process.cwd()), sep);
 
 // ========================================================
 // 1、CLI 交互
@@ -91,10 +91,10 @@ async function writing() {
 // Copy Static 文件
 function copyStatic(files: string[][]) {
   files.forEach(file => {
-    fs.copy(`${tpl}${file[0]}`, `${runPath}${answers.appName}/${file[1]}`);
+    fs.copy(join(tpl, file[0]), join(runPath, answers.appName, file[1]));
     console.log(
       chalk.green("+") +
-        ` ${chalk.grey(answers.appName + "/" + file[1])} ${chalk.green(
+        ` ${chalk.grey(answers.appName + sep + file[1])} ${chalk.green(
           "SUCCESS.👌"
         )}`
     );
@@ -105,11 +105,12 @@ function copyStatic(files: string[][]) {
 // 使用EJS，解析模版，并将解析后的内容存入新文件中
 function copyTemplate(files: string[][]) {
   files.forEach(async file => {
-    let compileContent = await ejs.renderFile(`${tpl}${file[0]}`, answers);
-    fs.write(`${runPath}${answers.appName}/${file[1]}`, compileContent);
+    let compileContent = await ejs.renderFile(join(tpl, file[0]), answers);
+
+    fs.write(join(runPath, answers.appName, sep, file[1]), compileContent);
     console.log(
       chalk.green("+") +
-        ` ${chalk.grey(answers.appName + "/" + file[1])} ${chalk.green(
+        ` ${chalk.grey(answers.appName + sep + file[1])} ${chalk.green(
           "SUCCESS.👌"
         )}`
     );
