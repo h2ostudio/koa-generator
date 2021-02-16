@@ -1,5 +1,6 @@
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from "fs";
 import { sep } from "path";
+
 /**
  * 文件操作类
  * @description 更加语义化的简便文件操作。
@@ -33,7 +34,7 @@ class file {
    */
   static copy(src: string, dest: string): boolean {
     if (!existsSync(src)) {
-      console.log("源文件不存在");
+      // console.log("源文件不存在");
       return false;
     }
     // 复制操作

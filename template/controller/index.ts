@@ -1,4 +1,4 @@
-import { Context, Next } from "koa"
+import { Context, Next } from "koa";
 
 
 export class Index {
