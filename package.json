@@ -1,11 +1,11 @@
 {
   "name": "koa-program",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "bin": {
     "koa": "bin/index.js"
   },
   "engines": {
-    "node": ">= 15"
+    "node": ">= 12"
   },
   "dependencies": {
     "chalk": "^4.1.0",
