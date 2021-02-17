@@ -1,4 +1,4 @@
-#!/usr/local/env node
+#! node
 import { Koa } from "./koa";
 
 new Koa()

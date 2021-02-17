@@ -1,4 +1,4 @@
-#!/usr/local/env node
+#! node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var koa_1 = require("./koa");
