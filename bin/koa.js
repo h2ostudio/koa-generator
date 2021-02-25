@@ -56,13 +56,13 @@ class Koa extends cli_1.Cli {
             yield this.prompt([
                 {
                     name: "appName",
-                    message: console_1.readonly("🎉App Name:"),
+                    message: console_1.readonly("🎉 App Name:"),
                     type: "text",
                     validate: (values) => values.length <= 0 ? `Input your project name, Please !` : true,
                 },
                 {
                     name: "pkgManager",
-                    message: console_1.readonly("🎰Package Manager:"),
+                    message: console_1.readonly("🎰 Package Manager:"),
                     type: "toggle",
                     active: "Yarn",
                     inactive: "Npm",
@@ -70,7 +70,7 @@ class Koa extends cli_1.Cli {
                 },
                 {
                     name: "author",
-                    message: console_1.readonly("🥤Author Name:"),
+                    message: console_1.readonly("🥤 Author Name:"),
                     type: "text",
                     initial: os.userInfo().username,
                 },

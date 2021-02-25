@@ -28,13 +28,13 @@ export class Koa extends Cli {
     await this.prompt([
       {
         name: "appName",
-        message: readonly("🎉App Name:"),
+        message: readonly("🎉 App Name:"),
         type: "text",
         validate: (values) => values.length <= 0 ? `Input your project name, Please !` : true,
       },
       {
         name: "pkgManager",
-        message: readonly("🎰Package Manager:"),
+        message: readonly("🎰 Package Manager:"),
         type: "toggle",
         active: "Yarn",
         inactive: "Npm",
@@ -42,7 +42,7 @@ export class Koa extends Cli {
       },
       {
         name: "author",
-        message: readonly("🥤Author Name:"),
+        message: readonly("🥤 Author Name:"),
         type: "text",
         initial: os.userInfo().username,
       },
